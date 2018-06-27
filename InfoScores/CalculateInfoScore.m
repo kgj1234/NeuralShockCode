@@ -35,6 +35,10 @@ mean_firing_rate=mean(neural_activity,2);
 firing_rate_per_bin=zeros(size(neural_activity,1),length(probabilities));
 
 %calculate info scores for all shifted data, as well as original data
+
+%If you want to calculate info without comparing to shifted, set i=0  in
+%the for loop, and uncomment the code after the for loop that calculates
+%mean and std.
 for i=-50:50
     shifted_position=shiftposition(position,i);
 

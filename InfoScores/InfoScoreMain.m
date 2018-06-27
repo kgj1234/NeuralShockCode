@@ -6,10 +6,11 @@ function info=InfoScoreMain(neural_activity,position,speed,hor_bin_vector,ver_bi
 %position-Nx2 matrix
 %speed-Nx1 matrix
 %hor_bin_vector-a vector containing the number of horizontal bins desired
-%for each experiment
+%for each experiment, info scores are averaged after calculating them using
+%each element of the vector
 %ver_bin_vector-same as hor_bin_vector but describing vertical bins
 %offset-offset the data to account for recording delays if desired
-%vel_thresh-data points less than vel_thresh will not be included in
+%vel_thresh-data points with velocity less than vel_thresh will not be included in
 %analysis
 %
 
@@ -26,9 +27,10 @@ trackheight=max(position(:,2))-min(position(:,2));
 %exclude data points with small velocity
 if vel_thresh>0
     include_indices=(speed>vel_thresh);
+    neural_activity=neural_activity(:,include_indices);
+    position=position(include_indices,:);
 end
-neural_activity=neural_activity(:,include_indices);
-position=position(include_indices,:);
+
 
 %Calculate and average info scores
 for i=1:length(hor_bin_vector)
