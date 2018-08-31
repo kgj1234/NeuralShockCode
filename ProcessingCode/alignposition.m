@@ -1,4 +1,4 @@
-function []=alignposition(neuron,behav)
+function neuron=alignposition(neuron,behav)
 %Aligns position data with  neuron time stamps
 [correctdatatime,correctdatax,correctdatay]=correcteddata(behav);
 

@@ -1,4 +1,4 @@
-function []=calculategaussianfiringratefromS(neuronIndividuals,sigma,sz)
+function neuronIndividuals=calculategaussianfiringratefromS(neuronIndividuals,sigma,sz)
 %sigma=100,sz=30
 for j=1:length(neuronIndividuals)
     neuronIndividuals{j}.firing_rate=zeros(size(neuronIndividuals{j}.S));
